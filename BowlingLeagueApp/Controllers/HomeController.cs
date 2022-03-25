@@ -35,8 +35,12 @@ namespace BowlingLeagueApp.Controllers
         [HttpPost]
         public IActionResult CreateBowler(Bowler bowler)
         {
-            _repo.AddBowler(bowler);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _repo.AddBowler(bowler);
+                return RedirectToAction("Index");
+            }
+            else return View(bowler);
         }
 
         [HttpGet]
