@@ -36,6 +36,8 @@ namespace BowlingLeagueApp.Models
         [MaxLength(14)]
         public string BowlerPhoneNumber { get; set; }
 
-
+        [Required]
+        public int TeamID { get; set; }
+        public Team Team { get; set; }
     }
 }

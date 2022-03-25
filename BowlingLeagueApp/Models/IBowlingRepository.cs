@@ -8,6 +8,7 @@ namespace BowlingLeagueApp.Models
     public interface IBowlingRepository
     {
         IQueryable<Bowler> Bowlers { get; }
+        IQueryable<Team> Teams { get; }
 
         public void AddBowler(Bowler bowler);
         public void RemoveBowler(Bowler bowler);

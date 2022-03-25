@@ -1,5 +1,6 @@
 ﻿using BowlingLeagueApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -21,13 +22,14 @@ namespace BowlingLeagueApp.Controllers
 
         public IActionResult Index()
         {
-            List<Bowler> bowlers = _repo.Bowlers.ToList<Bowler>();
+            List<Bowler> bowlers = _repo.Bowlers.Include(b => b.Team).ToList<Bowler>();
             return View(bowlers);
         }
 
         [HttpGet]
         public IActionResult CreateBowler()
         {
+            ViewBag.Teams = _repo.Teams.ToList();
             ViewBag.EditMode = false;
             return View("BowlerForm", new Bowler());
         }
@@ -46,8 +48,9 @@ namespace BowlingLeagueApp.Controllers
         [HttpGet]
         public IActionResult EditBowler(int id)
         {
+            ViewBag.Teams = _repo.Teams.ToList();
             ViewBag.EditMode = true;
-            Bowler bowler = _repo.Bowlers.FirstOrDefault(b => b.BowlerID == id);
+            Bowler bowler = _repo.Bowlers.Include(b => b.Team).FirstOrDefault(b => b.BowlerID == id);
             return View("BowlerForm", bowler);
         }
 

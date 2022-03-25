@@ -24,6 +24,16 @@
     </div>
 
     <div class="form-group">
+        <label asp-for="TeamID">Team</label>
+        <select class="custom-select" asp-for="TeamID">
+            @foreach(Team team in ViewBag.Teams)
+            {
+                <option value="@team.TeamID">@team.TeamName</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
         <label asp-for="BowlerAddress">Address</label>
         <input class="form-control" asp-for="BowlerAddress" />
     </div>
