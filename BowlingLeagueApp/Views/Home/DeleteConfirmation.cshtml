@@ -1,0 +1,6 @@
+﻿@model Bowler
+<h1>Are you sure you want to delete @Model.BowlerFirstName @Model.BowlerLastName?</h1>
+<form method="post">
+    <a class="btn btn-primary" asp-controller="Home" asp-action="Index">Return</a>
+    <button type="submit" class="btn btn-danger">Delete Bowler</button>
+</form>

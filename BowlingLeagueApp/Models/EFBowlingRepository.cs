@@ -14,5 +14,23 @@ namespace BowlingLeagueApp.Models
         }
 
         public IQueryable<Bowler> Bowlers => _context.Bowlers;
+
+        public void AddBowler(Bowler bowler)
+        {
+            _context.Add(bowler);
+            _context.SaveChanges();
+        }
+
+        public void RemoveBowler(Bowler bowler)
+        {
+            _context.Remove(bowler);
+            _context.SaveChanges();
+        }
+
+        public void UpdateBowler(Bowler bowler)
+        {
+            _context.Update(bowler);
+            _context.SaveChanges();
+        }
     }
 }
