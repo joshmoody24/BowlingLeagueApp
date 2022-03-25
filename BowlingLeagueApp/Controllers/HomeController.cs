@@ -12,13 +12,17 @@ namespace BowlingLeagueApp.Controllers
     public class HomeController : Controller
     {
 
-        public HomeController()
+        private IBowlingRepository _repo { get; set; }
+
+        public HomeController(IBowlingRepository temp)
         {
+            _repo = temp;
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<Bowler> bowlers = _repo.Bowlers.ToList<Bowler>();
+            return View(bowlers);
         }
     }
 }
