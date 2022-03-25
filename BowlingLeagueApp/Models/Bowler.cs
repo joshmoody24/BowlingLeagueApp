@@ -26,6 +26,8 @@ namespace BowlingLeagueApp.Models
 
         public string BowlerZip { get; set; }
 
+        public string BowlerPhoneNumber { get; set; }
+
 
     }
 }
