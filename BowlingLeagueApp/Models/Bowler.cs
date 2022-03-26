@@ -12,9 +12,11 @@ namespace BowlingLeagueApp.Models
         [Required]
         public int BowlerID { get; set; }
 
+        [Required]
         [MaxLength(50)]
         public string BowlerFirstName { get; set; }
 
+        [Required]
         [MaxLength(50)]
         public string BowlerLastName { get; set; }
 

@@ -6,6 +6,16 @@
 
 <div class="text-center">
     <h1 class="display-4">Bowler Contact List</h1>
+    <div class="d-flex flex-row flex-wrap">
+        <a class="btn @(ViewBag.SelectedCategory == "" ? "btn-primary" : "btn-outline-primary") m-1" asp-controller="Home" asp-action="Index" asp-route-teamname="">All Teams</a>
+        @foreach(Team team in ViewBag.Teams)
+            {
+                <a class="btn @(ViewBag.SelectedCategory.ToLower() == team.TeamName.ToLower() ? "btn-primary" : "btn-outline-primary") m-1"
+                   asp-controller="Home" asp-action="Index" asp-route-teamname="@team.TeamName">
+                    @team.TeamName
+                </a>
+            }
+    </div>
     <a class="btn btn-success m-3 float-right" asp-controller="Home" asp-action="CreateBowler">Add Bowler</a>
     <table class="table table-bordered table-striped">
         <thead>

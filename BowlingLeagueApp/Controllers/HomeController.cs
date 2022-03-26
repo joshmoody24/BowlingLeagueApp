@@ -20,10 +20,13 @@ namespace BowlingLeagueApp.Controllers
             _repo = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string teamname = "")
         {
+            ViewBag.SelectedCategory = teamname;
+            ViewBag.Teams = _repo.Teams.ToList();
             List<Bowler> bowlers = _repo.Bowlers
                 .Include(b => b.Team)
+                .Where(b => b.Team.TeamName == teamname || teamname == "")
                 .OrderBy(b => b.BowlerID)
                 .ToList<Bowler>();
             return View(bowlers);
@@ -45,7 +48,9 @@ namespace BowlingLeagueApp.Controllers
                 _repo.AddBowler(bowler);
                 return RedirectToAction("Index");
             }
-            else return View(bowler);
+            ViewBag.EditMode = false;
+            ViewBag.Teams = _repo.Teams.ToList();
+            return View("BowlerForm", bowler);
         }
 
         [HttpGet]
