@@ -35,8 +35,10 @@
                 <td>@b.BowlerPhoneNumber</td>
                 <td>@b.Team?.TeamName</td>
                 <td>
-                    <a class="btn btn-sm btn-warning" asp-controller="Home" asp-action="EditBowler" asp-route-id="@b.BowlerID">Edit</a>
-                    <a class="btn btn-sm btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@b.BowlerID">Delete</a>
+                    <div class="btn-group">
+                        <a class="btn btn-sm btn-warning" asp-controller="Home" asp-action="EditBowler" asp-route-id="@b.BowlerID">Edit</a>
+                        <a class="btn btn-sm btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@b.BowlerID">Delete</a>
+                    </div>
                 </td>
             </tr>
         }

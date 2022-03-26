@@ -22,7 +22,10 @@ namespace BowlingLeagueApp.Controllers
 
         public IActionResult Index()
         {
-            List<Bowler> bowlers = _repo.Bowlers.Include(b => b.Team).ToList<Bowler>();
+            List<Bowler> bowlers = _repo.Bowlers
+                .Include(b => b.Team)
+                .OrderBy(b => b.BowlerID)
+                .ToList<Bowler>();
             return View(bowlers);
         }
 
